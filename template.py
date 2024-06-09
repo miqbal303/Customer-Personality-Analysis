@@ -23,7 +23,8 @@ files = [
     "project/deployment/inference.py",
     "project/data/marketing_campaign.csv",
     "project/run_pipeline.py",
-    "project/logger.py"
+    "project/logger.py",
+    "project/exception.py"
 ]
 
 # Create directories
