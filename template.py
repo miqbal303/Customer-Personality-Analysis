@@ -5,8 +5,11 @@ dirs = [
     "project/steps",
     "project/pipelines",
     "project/deployment",
+    "project/config",
     "project/data",
-    "project/artifacts"
+    "project/artifacts",
+    "project/logs",
+    "project/tests"
 ]
 
 # Define the files to create
@@ -21,7 +24,10 @@ files = [
     "project/deployment/__init__.py",
     "project/deployment/deploy_to_sagemaker.py",
     "project/deployment/inference.py",
+    "project/config/config.yaml",
     "project/data/marketing_campaign.csv",
+    "project/tests/__init__.py",
+    "project/tests/test_steps.py",
     "project/run_pipeline.py",
     "project/logger.py",
     "project/exception.py"
