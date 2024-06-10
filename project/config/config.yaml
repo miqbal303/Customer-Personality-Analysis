@@ -1,0 +1,15 @@
+data_ingestion:
+  data_path: "project/data/marketing_campaign.csv"
+
+data_transformation:
+  age_limit: 80
+  income_limit: 150000
+
+clustering:
+  n_clusters: 3
+
+model_training:
+  test_size: 0.2
+  random_state: 42
+  n_estimators: 100
+  max_depth: null
