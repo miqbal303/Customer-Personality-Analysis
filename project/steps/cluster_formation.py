@@ -4,7 +4,7 @@ from sklearn.cluster import KMeans
 import mlflow
 import matplotlib.pyplot as plt
 from zenml.steps import step
-from logger import logging
+from project.logger import logging
 
 @step
 def clustering(transformed_data_path: str) -> str:

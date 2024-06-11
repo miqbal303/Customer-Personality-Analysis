@@ -8,8 +8,8 @@ import joblib
 import mlflow
 import numpy as np
 from zenml.steps import step, BaseParameters
-from logger import logging
-from exception import CustomException
+from project.logger import logging
+from project.exception import CustomException
 
 class ModelTrainingParams(BaseParameters):
     test_size: float = 0.3

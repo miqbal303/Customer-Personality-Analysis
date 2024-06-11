@@ -4,9 +4,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from zenml.steps import step, BaseParameters
-from logger import logging
+from project.logger import logging
 import mlflow
-from exception import CustomException
+from project.exception import CustomException
 
 class DataIngestionParams(BaseParameters):
     data_path: str

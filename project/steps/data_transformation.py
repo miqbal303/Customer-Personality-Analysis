@@ -10,9 +10,9 @@ from zenml.steps import step
 from typing import Tuple
 import seaborn as sns
 import matplotlib.pyplot as plt
-from logger import logging
+from project.logger import logging
 import mlflow
-from exception import CustomException
+from project.exception import CustomException
 
 @step
 def data_transformation(raw_data_path: str) -> Tuple[str, str]:
