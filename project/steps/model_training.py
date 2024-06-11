@@ -39,6 +39,7 @@ def model_training(transformed_data_path: str, cluster_file_path: str, params: M
         accuracy_scores = {}
         auc_scores = {}
         classification_reports = {}
+        model_paths = {}
 
         for model_name, model in models.items():
             logging.info(f"Training {model_name}")
@@ -70,18 +71,25 @@ def model_training(transformed_data_path: str, cluster_file_path: str, params: M
             mlflow.sklearn.log_model(model, f"{model_name}_model")
             mlflow.log_artifact(model_path)
 
+            model_paths[model_name] = model_path
+
         # Find the best model
         best_model_name = max(accuracy_scores, key=accuracy_scores.get)
         best_model_accuracy = accuracy_scores[best_model_name]
         best_model_auc = auc_scores.get(best_model_name, "N/A")
         best_classification_report = classification_reports[best_model_name]
 
-        logging.info(f'Best Model: {best_model_name}')
-        logging.info(f'Accuracy: {best_model_accuracy}')
-        logging.info(f'AUC_ROC Score: {best_model_auc}')
-        logging.info(f'Classification Report: {best_classification_report}')
-        mlflow.autolog()
+        if best_model_accuracy >= 0.60:
+            logging.info(f'Best Model: {best_model_name}')
+            logging.info(f'Accuracy: {best_model_accuracy}')
+            logging.info(f'AUC_ROC Score: {best_model_auc}')
+            logging.info(f'Classification Report: {best_classification_report}')
+            mlflow.autolog()
 
-        return model_path
+            return model_paths[best_model_name]
+        else:
+            logging.info("There is no best model with accuracy above 60%")
+            return "There is no best model with accuracy above 60%"
+
     except Exception as e:
         raise CustomException(e, sys)
